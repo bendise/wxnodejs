@@ -1,7 +1,7 @@
 # wxnodejs
 nodejs连接oracle的代码
 
-其中文件夹“库存查询nodejs版_win7”是在win7环境下编译的，适用于win7操作系统，“库存查询nodejs版_win2008ser”是在win2008ser下编译的，适用于win2008ser操作系统
+其中文件夹“库存查询nodejs版_win7”是在win7环境下编译的，适用于win7操作系统，“库存查询nodejs版_win2008ser”是在win2008ser下编译的，适用于win2008ser操作系统,有任何问题可到我的博客交流 www.forevernodejs.cn
 
 官方安装说明https://community.oracle.com/docs/DOC-931127
 
