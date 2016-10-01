@@ -1,0 +1,46 @@
+<% include header.ejs %>
+
+<div class="container js_container">
+    <div class="page slideIn cell">
+    <div class="hd">
+        <h1 class="page_title">库存查询结果</h1>
+    </div>
+    <div class="bd">
+    <div class="weui_cells_title">每页显示5条 页次：<!--<%= currentPage/totalPageNum %>-->
+        <a href="/Product/QueryList?currentPage=1<!--<%= currentPage-1 %>-->" class="weui_btn weui_btn_mini weui_btn_primary">上一页</a>
+        <a href="/Product/QueryList?currentPage=2<!--<%= currentPage+1 %>-->" class="weui_btn weui_btn_mini weui_btn_primary">下一页</a></div>
+    <% pub_waredict_v.forEach(function(item)){ %>
+        <div class="weui_cells weui_cells_access">
+        <a class="weui_cell" href="QueryInfo?productCode=<%= item[0][1] %>&productState=<%= productState %>">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>代码</p>
+            </div>
+            <div class="weui_cell_ft">
+                <%= item[0][1] %>
+            </div>
+        </a>
+        <a class="weui_cell" href="QueryInfo?productCode=<%= item[0][1] %>&productState=<%= productState %>">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>公司</p>
+            </div>
+            <div class="weui_cell_ft">
+                <%= item[0][5] %>
+            </div>
+        </a>
+        <a class="weui_cell" href="QueryInfo?productCode=<%= item[0][1] %>&productState=<%= productState %>">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>商品名称</p>
+            </div>
+            <div class="weui_cell_ft">
+                <%= item[0][4] %>
+            </div>
+        </a>
+    </div>
+    <% }) %>
+</div>
+</div>
+</div>
+
+<% include js.ejs %>
+
+<% include footer.ejs %>

@@ -1,0 +1,140 @@
+<% include header.ejs %>
+
+<div class="container js_container">
+    <div class="page slideIn cell">
+    <div class="hd">
+        <h1 class="page_title">库存详情</h1>
+    </div>
+    <div class="bd">
+        <div class="weui_cells_title"></div>
+        <% pub_waredict_v.forEach(function(item){ %>
+		    <div class="weui_cells weui_cells_access">
+			    <div class="weui_cell">
+				    <div class="weui_cell_bd weui_cell_primary">
+					    <p>代码</p>
+				    </div>
+				    <div class="weui_cell_ft">
+					    <%=item[0]%>
+				    </div>
+			    </div>
+			    <div class="weui_cell">
+				    <div class="weui_cell_bd weui_cell_primary">
+					    <p>公司</p>
+				    </div>
+				    <div class="weui_cell_ft">
+					    国药控股北京有限公司
+				    </div>
+			    </div>
+			    <div class="weui_cell">
+				    <div class="weui_cell_bd weui_cell_primary">
+					    <p>商品名称</p>
+				    </div>
+				    <div class="weui_cell_ft">
+					    <%=item[3]%>
+				    </div>
+			    </div>
+			    <div class="weui_cell">
+				    <div class="weui_cell_bd weui_cell_primary">
+					    <p>生产厂家</p>
+				    </div>
+				    <div class="weui_cell_ft">
+					    <%=item[4]%>
+				    </div>
+			    </div>
+			    <div class="weui_cell">
+				    <div class="weui_cell_bd weui_cell_primary">
+					    <p>零售价</p>
+				    </div>
+				    <div class="weui_cell_ft">
+					    <%=item[5].toFixed(2)%>
+				    </div>
+			    </div>
+			    <div class="weui_cell">
+				    <div class="weui_cell_bd weui_cell_primary">
+					    <p>无税批发价</p>
+				    </div>
+				    <div class="weui_cell_ft">
+					    <%=item[6].toFixed(2)%>
+				    </div>
+			    </div>
+			    <div class="weui_cell">
+				    <div class="weui_cell_bd weui_cell_primary">
+					    <p>包装数量</p>
+				    </div>
+				    <div class="weui_cell_ft">
+					   <%=item[7]%>
+				    </div>
+			    </div>
+			    <div class="weui_cell">
+				    <div class="weui_cell_bd weui_cell_primary">
+					    <p>中包装数量</p>
+				    </div>
+				    <div class="weui_cell_ft">
+					    <%=item[8]%>
+				    </div>
+			    </div>
+			    <div class="weui_cell">
+				    <div class="weui_cell_bd weui_cell_primary">
+					    <p>剂量单位</p>
+				    </div>
+				    <div class="weui_cell_ft">
+					    <%=item[9]%>
+				    </div>
+			    </div>
+			    <div class="weui_cell">
+				    <div class="weui_cell_bd weui_cell_primary">
+					    <p>经营范围</p>
+				    </div>
+				    <div class="weui_cell_ft">
+					    <%=item[10]%>
+				    </div>
+			    </div>
+			    <div class="weui_cell">
+				    <div class="weui_cell_bd weui_cell_primary">
+					    <p>特殊药品</p>
+				    </div>
+				    <div class="weui_cell_ft">
+					    <%=item[11]%>
+				    </div>
+			    </div>
+			    <div class="weui_cell">
+				    <div class="weui_cell_bd weui_cell_primary">
+					    <p>药品分类</p>
+				    </div>
+				    <div class="weui_cell_ft">
+					    <%=item[12]%>
+				    </div>
+			    </div>
+			    <div class="weui_cell">
+				    <div class="weui_cell_bd weui_cell_primary">
+					    <p>批准文号</p>
+				    </div>
+				    <div class="weui_cell_ft">
+					   <%=item[13]%>
+				    </div>
+			    </div>
+			    <a class="weui_cell" href="QueryWarehouseNum?productCode=<%=item[1]%>">
+				    <div class="weui_cell_bd weui_cell_primary">
+					    <p>库存量</p>
+				    </div>
+				    <div class="weui_cell_ft">
+					   <%=item[14]%>
+				    </div>
+			    </a>
+			    <!-- <a class="weui_cell" href="QuerySalchaInfo?goodid=<%=item[1]%>">
+				    <div class="weui_cell_bd weui_cell_primary">
+					    <p>渠道控制</p>
+				    </div>
+				    <div class="weui_cell_ft">
+					    <%=item[15]%>
+				    </div>
+			    </a>-->
+		    </div>
+         <%});%>
+    </div>
+    </div>
+</div>
+
+<% include js.ejs %>
+
+<% include footer.ejs %>

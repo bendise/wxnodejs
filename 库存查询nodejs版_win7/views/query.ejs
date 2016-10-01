@@ -1,0 +1,47 @@
+<% include header.ejs %>
+
+<form id="erp_form" action="/Product/QueryList" method="post">
+    <div class="container js_container">    
+        <div class="weui_cells_title">库存查询</div>
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">商品码</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input name="productCode" class="weui_input" type="text"  placeholder="请输入商品代码">
+                </div>
+            </div>            
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">商品名</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input name="productName" class="weui_input" type="text"  placeholder="请输入商品名称">
+                </div>
+            </div> 
+			<div class="weui_cells">
+            <div class="weui_cell weui_cell_select">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select class="weui_select" name="productState">
+                        <option selected="" value="00">排除零库存</option>
+                        <option value="10">零</option>
+                        <option value="00">非零</option>
+                    </select>
+                </div>
+            </div>         
+			</div>			
+        </div>
+        <div class="weui_cells_tips">请输入查询条件</div>
+        <div class="weui_btn_area">
+			<a type="button" class="weui_btn weui_btn_primary"  id="butsubmit">确定</a>
+        </div>
+
+    </div>
+</form>
+<% include js.ejs %>
+<script>
+    $().ready(function () {
+        $("#butsubmit").click(function () {
+            $("#erp_form").submit();
+        });
+    })
+</script>
+
+<% include footer.ejs %>

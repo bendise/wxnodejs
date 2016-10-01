@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>填写信息</title>
+    <link rel="stylesheet" href="./style/weui.css"/>
+    <link rel="stylesheet" href="./style/example.css"/>
+	<style>
+	.error{
+		color:red;
+	}
+	</style>
+</head>
+<body ontouchstart>
+<form id="userlogin_form" action="/customerform" method="post">
+    <div class="container js_container">    
+        <div class="weui_cells_title">填写信息信息</div>
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">姓名</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input id="username" name="username" class="weui_input" type="text"  placeholder="请输入姓名" >
+                </div>
+            </div>            
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">公司名称</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input id="company" name="company" class="weui_input" type="weui_input"  placeholder="请输入公司名称" >
+                </div>
+            </div>    
+			<div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">手机号码</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input id="mobile" name="mobile" class="weui_input" type="weui_input"  placeholder="请输入手机号码" >
+                </div>
+            </div> 
+			<div class="bd">
+			<div class="weui_cells_title">单选列表项</div>
+			<div class="weui_cells weui_cells_radio">
+				<label class="weui_cell weui_check_label" for="x11">
+					<div class="weui_cell_bd weui_cell_primary">
+						<p>厂家</p>
+					</div>
+					<div class="weui_cell_ft">
+						<input type="radio" class="weui_check" name="radio1" id="x11" value="1">
+						<span class="weui_icon_checked"></span>
+					</div>
+				</label>
+				<label class="weui_cell weui_check_label" for="x12">
+
+					<div class="weui_cell_bd weui_cell_primary">
+						<p>代理商</p>
+					</div>
+					<div class="weui_cell_ft">
+						<input type="radio" name="radio1" class="weui_check" id="x12" value="2">
+						<span class="weui_icon_checked"></span>
+					</div>
+				</label>
+			</div>
+			
+			</div>
+			<div class="weui_cell" id="hxyy1">
+                <div class="weui_cell_hd"><label class="weui_label">核心医院1</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input id="hospital" name="hospital" class="weui_input" type="weui_input"  placeholder="请输入医院名称" >
+                </div>
+            </div> 
+			<div class="weui_cell" id="hxyy2">
+                <div class="weui_cell_hd"><label class="weui_label">核心医院2</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input id="hospital" name="hospital" class="weui_input" type="weui_input"  placeholder="请输入医院名称" >
+                </div>
+            </div> 
+			<div class="weui_cell" id="hxyy3">
+                <div class="weui_cell_hd"><label class="weui_label">核心医院3</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input id="hospital" name="hospital" class="weui_input" type="weui_input"  placeholder="请输入医院名称" >
+                </div>
+            </div> 
+        </div>
+        <div class="weui_cells_tips">请您填写信息后点击提交按钮，成功后扫描二维码关注采购中心平台公众号</div>
+        <div class="weui_btn_area">
+            <a type="button" class="weui_btn weui_btn_primary"  id="butsubmit">提交</a>
+        </div>
+    </div>
+	</form>
+	<script src="./js/jquery-1.12.2.min.js"></script>
+    <script src="./js/example.js"></script>
+	 <script src="./js/zepto.min.js"></script>
+	 <script src="./js/router.min.js"></script>
+	<script src="./js/jquery.validate.js"></script>
+	<script>
+	$().ready(function() {	
+			$('#hxyy1').hide();
+			$('#hxyy2').hide();
+			$('#hxyy3').hide();
+            $("#butsubmit").click(function () {	
+				var hxyy_value = $('input:radio:checked').val();
+				var flag = true;
+				if(hxyy_value==null){
+					alert("厂家或代理商请选择一种！");
+					flag = false;
+				}
+				
+				//var hospital_value = $("#hospital").val();			
+				//if(hxyy_value=="2" && hospital_value==""){
+				//	alert("请填写医院名称！")
+				//	flag=false;
+				//}			
+				
+				if(flag==true){
+					 $("#userlogin_form").submit(); 
+				}
+			                  
+            });
+			
+			$('input:radio').click(function() {
+				var hxyy_value = $('input:radio:checked').val();
+				//alert(hxyy_value);
+				if(hxyy_value=="1")
+				{
+					$('#hxyy1').hide();
+					$('#hxyy2').hide();
+					$('#hxyy3').hide();
+				}
+				else
+				{
+					$('#hxyy1').show();
+					$('#hxyy2').show();
+					$('#hxyy3').show();
+				}		
+			});
+		
+			
+			// 手机号码验证
+			jQuery.validator.addMethod("isMobile", function(value, element) {
+				var length = value.length;
+				var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+				return this.optional(element) || (length == 11 && mobile.test(value));
+			}, "请正确填写您的手机号码");
+
+			 $("#userlogin_form").validate({ 
+                rules:{
+                    username:"required",
+                    company:"required",
+					mobile:{
+						required : true,
+						minlength : 11,			
+						isMobile : true	
+					}			
+                },
+                messages:{
+                    username:"姓名必须填写",                  
+                    company:"公司名称必须填写",
+					mobile : {
+						required : "请输入手机号",
+						minlength : "确认手机不能小于11个字符",
+						isMobile : "请正确填写您的手机号码"
+					}		
+                }                          
+            });   
+        })
+	</script>
+</body>
+</html>

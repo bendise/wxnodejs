@@ -1,0 +1,51 @@
+<% include header.ejs %>
+
+
+<form id="userlogin_form" action="/Login" method="post">
+    <div class="container js_container">    
+        <div class="weui_cells_title">用户登录 </div>
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">用户名</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input id="username" name="username" class="weui_input" type="text"  placeholder="请输入用户名" >
+                </div>
+            </div>            
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">密  码</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input id="password" name="password" class="weui_input" type="password"  placeholder="请输入密码" >
+                </div>
+            </div>            
+        </div>
+        <div class="weui_cells_tips">请输入综合服务平台的账号和密码</div>
+        <div class="weui_btn_area">
+            <a type="button" class="weui_btn weui_btn_primary"  id="butsubmit">确定</a>
+        </div>
+    </div>
+</form>
+
+
+<% include js.ejs %>
+
+<script>
+	$().ready(function () {
+		$("#butsubmit").click(function () {
+			$("#userlogin_form").submit();
+		});
+
+		$("#userlogin_form").validate({
+			rules: {
+				username: "required",
+				password: "required"
+			},
+			messages: {
+				username: "用户名必须填写",
+				password: "密码必须填写"
+			}
+		});
+	})
+</script>
+
+
+<% include footer.ejs %>

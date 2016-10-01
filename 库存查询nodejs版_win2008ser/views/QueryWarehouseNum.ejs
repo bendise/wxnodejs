@@ -1,0 +1,43 @@
+<% include header.ejs %>
+
+<div class="container js_container">
+    <div class="page slideIn cell">
+    <div class="hd">
+        <h1 class="page_title">库存量</h1>
+    </div>
+    <div class="bd">
+        <div class="weui_cells_title"></div>
+        <% pub_dept_v.forEach(function(item){ %>
+		<div class="weui_cells weui_cells">
+			<div class="weui_cell">
+				<div class="weui_cell_bd weui_cell_primary">
+					<p>仓库</p>
+				</div>
+				<div class="weui_cell_ft">
+					<%=item[1]%>
+				</div>
+			</div>
+			<div class="weui_cell">
+				<div class="weui_cell_bd weui_cell_primary">
+					<p>库存状态</p>
+				</div>
+				<div class="weui_cell_ft">
+					<%=item[2]%>
+				</div>
+			</div>
+			<div class="weui_cell">
+				<div class="weui_cell_bd weui_cell_primary">
+					<p>库存量</p>
+				</div>
+				<div class="weui_cell_ft">
+					<%=item[3]%>
+				</div>
+			</div>			
+		</div>
+        <%});%>
+</div>
+</div>
+</div>
+
+<% include js.ejs %>
+<% include footer.ejs %>
